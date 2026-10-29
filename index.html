@@ -389,16 +389,16 @@
     <form class="store-edit-box" id="store-edit-form">
       <h2>Edit store details</h2>
       <label>Store name
-        <input type="text" id="se-name" required>
+        <input type="text" id="se-name">
       </label>
       <label>Drug licence number
-        <input type="text" id="se-licence" required>
+        <input type="text" id="se-licence">
       </label>
       <label>Food licence number
-        <input type="text" id="se-foodlicence" required>
+        <input type="text" id="se-foodlicence">
       </label>
       <label>GST number
-        <input type="text" id="se-gst" required>
+        <input type="text" id="se-gst">
       </label>
       <label>Pharmacists (one per line: Name, phone)
         <textarea id="se-pharm"></textarea>
@@ -407,13 +407,13 @@
         <textarea id="se-disclaimer"></textarea>
       </label>
       <label>Address
-        <textarea id="se-address" required></textarea>
+        <textarea id="se-address"></textarea>
       </label>
       <label>Phone
-        <input type="text" id="se-phone" required>
+        <input type="text" id="se-phone">
       </label>
       <label>Store timings
-        <input type="text" id="se-hours" required>
+        <input type="text" id="se-hours">
       </label>
       <label>Email
         <input type="email" id="se-email">
@@ -1050,8 +1050,8 @@
       }
       document.querySelectorAll('[data-store="licence"]').forEach(function (el) { el.textContent = sd.licence; });
       // Older saved details may not have these two fields yet, so fall back to the defaults
-      document.querySelectorAll('[data-store="foodlicence"]').forEach(function (el) { el.textContent = sd.foodlicence || '12715013000089'; });
-      document.querySelectorAll('[data-store="gst"]').forEach(function (el) { el.textContent = sd.gst || '09AAGFR1291Q1ZJ'; });
+      document.querySelectorAll('[data-store="foodlicence"]').forEach(function (el) { el.textContent = sd.foodlicence !== undefined ? sd.foodlicence : '12715013000089'; });
+      document.querySelectorAll('[data-store="gst"]').forEach(function (el) { el.textContent = sd.gst !== undefined ? sd.gst : '09AAGFR1291Q1ZJ'; });
       document.querySelectorAll('[data-store="address"]').forEach(function (el) { el.textContent = sd.address; });
       document.querySelectorAll('[data-store="hours"]').forEach(function (el) { el.textContent = sd.hours; });
       document.querySelectorAll('[data-store="phone"]').forEach(function (el) {
