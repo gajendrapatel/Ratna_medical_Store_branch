@@ -1066,6 +1066,12 @@
       if (Array.isArray(sd.photos) && sd.photos.length) storePhotos = sd.photos;
       else if (sd.photo) storePhotos = [sd.photo];
       showPhoto(0);
+      // Hide any detail that is blank, so only filled-in details show
+      document.querySelectorAll('[data-store]').forEach(function (el) {
+        if (el.getAttribute('data-store') === 'name') return;
+        var item = el.closest('.store-details > div') || el.closest('p');
+        if (item) item.hidden = !el.textContent.trim();
+      });
     }
     // Load the saved store details: from shared storage, otherwise from this browser
     async function loadStoreDetails() {
