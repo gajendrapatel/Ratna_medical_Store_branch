@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ratna Medical Store Branch</title>
+  <meta name="description" content="Ratna Medical Store Branch - trusted pharmacy offering prescription medicines, OTC products, and friendly advice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #b03a2e;
+      --primary-dark: #7d2519;
+      --accent: #f4a261;
+      --bg: #f7fbfb;
+      --surface: #ffffff;
+      --text: #1d2b2b;
+      --muted: #5b6b6b;
+      --border: #dce7e7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f1a1a;
+        --surface: #172525;
+        --text: #e6f0f0;
+        --muted: #9fb5b5;
+        --border: #2a3d3d;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f1a1a;
+      --surface: #172525;
+      --text: #e6f0f0;
+      --muted: #9fb5b5;
+      --border: #2a3d3d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    img, svg { max-width: 100%; display: block; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 100% - 32px); margin: 0 auto; }
+    section { padding: 64px 0; }
+    h1, h2, h3 { line-height: 1.25; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 12px; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.08em;
+      font-size: 0.8rem; font-weight: 600; color: var(--primary);
+    }
+    .lead { color: var(--muted); max-width: 640px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; gap: 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; color: var(--text); }
+    .brand:hover { text-decoration: none; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--primary); color: #fff;
+      display: grid; place-items: center; font-size: 1.3rem; font-weight: 800;
+    }
+    nav ul { list-style: none; display: flex; gap: 22px; }
+    nav a { color: var(--text); font-weight: 500; }
+    nav a:hover { color: var(--primary); text-decoration: none; }
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: 999px;
+      background: var(--primary); color: #fff; font-weight: 600;
+      border: 2px solid var(--primary); transition: background .2s, transform .2s;
+    }
+    .btn:hover { background: var(--primary-dark); text-decoration: none; transform: translateY(-1px); }
+    .btn.ghost { background: transparent; color: var(--primary); }
+    .btn.ghost:hover { background: var(--primary); color: #fff; }
+    .nav-toggle {
+      display: none; background: none; border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 10px; font-size: 1.2rem; color: var(--text); cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff; padding: 88px 0;
+    }
+    .hero .eyebrow { color: #cdeeed; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 10px 0 16px; }
+    .hero p { font-size: 1.1rem; max-width: 560px; opacity: .95; }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero .btn { background: var(--accent); border-color: var(--accent); color: #1d2b2b; }
+    .hero .btn:hover { background: #e8914a; border-color: #e8914a; }
+    .hero .btn.ghost { background: transparent; color: #fff; border-color: #fff; }
+    .hero .btn.ghost:hover { background: #fff; color: var(--primary-dark); }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+    .hero-badges span {
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+      padding: 6px 14px; border-radius: 999px; font-size: .9rem;
+    }
+
+    /* Cards */
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-top: 36px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 26px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(176,58,46,.12); }
+    .icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(176,58,46,.12); color: var(--primary);
+      display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 14px;
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    /* Services */
+    .alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    /* About */
+    .about { display: grid; gap: 40px; grid-template-columns: 1fr 1fr; align-items: center; }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px; text-align: center;
+    }
+    .stat strong { display: block; font-size: 2rem; color: var(--primary); }
+    .stat span { color: var(--muted); font-size: .9rem; }
+    .checks { list-style: none; margin-top: 18px; }
+    .checks li { padding: 6px 0 6px 28px; position: relative; color: var(--text); }
+    .checks li::before {
+      content: "\2714"; position: absolute; left: 0; top: 6px;
+      color: var(--primary); font-weight: 700;
+    }
+
+    /* Contact */
+    .contact { display: grid; gap: 28px; grid-template-columns: 1fr 1fr; }
+    .info-item { display: flex; gap: 14px; margin-bottom: 18px; }
+    .info-item .icon { margin: 0; flex-shrink: 0; }
+    .info-item h4 { font-size: 1rem; }
+    .info-item p { color: var(--muted); font-size: .95rem; }
+    form {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; display: grid; gap: 14px;
+    }
+    label { font-size: .9rem; font-weight: 600; display: grid; gap: 6px; }
+    input, textarea, select {
+      font: inherit; color: var(--text); background: var(--bg);
+      border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; width: 100%;
+    }
+    input:focus, textarea:focus, select:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+    textarea { min-height: 110px; resize: vertical; }
+    .form-note { font-size: .85rem; color: var(--muted); }
+    .success { color: var(--primary); font-weight: 600; display: none; }
+
+    footer {
+      background: var(--primary-dark); color: #d9efee; padding: 36px 0; font-size: .92rem;
+    }
+    footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+    footer a { color: #fff; }
+    footer .brand { color: #fff; }
+
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 999px;
+      padding: 6px 12px; cursor: pointer; color: var(--text); font: inherit; font-size: .9rem;
+    }
+
+    /* Price search */
+    .search-tools { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .search-tools input[type="search"] { flex: 1 1 280px; padding: 13px 16px; font-size: 1rem; }
+    .file-btn {
+      display: inline-flex; align-items: center; padding: 12px 20px;
+      border: 2px solid var(--primary); color: var(--primary); border-radius: 999px;
+      font-weight: 600; cursor: pointer; white-space: nowrap;
+    }
+    .file-btn:hover { background: var(--primary); color: #fff; }
+    .table-wrap {
+      overflow-x: auto; margin-top: 16px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg); font-weight: 600; }
+    th.num, td.num { text-align: right; }
+    td.num { font-weight: 600; color: var(--primary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+
+    /* Login */
+    #login-screen {
+      position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.45);
+      display: none; place-items: center; padding: 16px;
+    }
+    #login-screen.open { display: grid; }
+    .admin-only { display: none; }
+    body.is-admin .admin-only { display: inline-flex; }
+    .link-btn {
+      background: none; border: none; color: var(--primary); font: inherit;
+      font-weight: 600; cursor: pointer; padding: 8px;
+    }
+    .link-btn:hover { text-decoration: underline; }
+    .welcome { font-size: .9rem; font-weight: 600; color: var(--primary); white-space: nowrap; }
+    .welcome:empty { display: none; }
+    .btn:disabled, .btn:disabled:hover { opacity: .45; cursor: not-allowed; transform: none; background: var(--primary); }
+    .login-box {
+      width: min(380px, 100%); background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; display: grid; gap: 14px;
+    }
+    .login-box .brand { justify-content: center; }
+    .login-box h2 { text-align: center; margin-bottom: 0; }
+    .login-error { color: #c0392b; font-size: .9rem; display: none; text-align: center; }
+
+    /* Store photo with details beside it */
+    .store-top { padding-top: 24px; }
+    .store-top.is-loading { visibility: hidden; }
+    .store-row {
+      display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+      gap: 28px; align-items: center;
+    }
+    .store-photo {
+      width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--border);
+    }
+    .store-details { display: grid; gap: 18px; }
+    .store-left { display: grid; gap: 14px; justify-items: start; }
+    .store-left .store-photo { width: 100%; }
+    .slider-dots { display: flex; gap: 10px; justify-content: center; width: 100%; }
+    .slider-dots button { width: 12px; height: 12px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: var(--border); }
+    .slider-dots button.active { background: var(--primary); }
+    .slider-dots[hidden] { display: none; }
+    .photo-edit-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .photo-edit-item { display: grid; gap: 6px; width: 96px; }
+    .photo-edit-item img { width: 96px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+    .photo-edit-item button { font-size: .8rem; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; }
+    .store-details h3 { font-size: .95rem; color: var(--primary); margin-bottom: 2px; }
+    .store-details p { color: var(--text); font-size: 1rem; }
+    .store-details a { font-weight: 600; color: var(--text); }
+    @media (max-width: 760px) {
+      .store-row { grid-template-columns: 1fr; }
+    }
+
+    /* Visual polish */
+    body { font-family: "Poppins", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+    h1, h2, h3 { letter-spacing: -0.01em; }
+    header { box-shadow: 0 2px 14px rgba(0,0,0,.06); }
+    .brand-mark { box-shadow: 0 4px 12px rgba(176,58,46,.3); }
+    .eyebrow {
+      display: inline-block; background: rgba(176,58,46,.1);
+      padding: 4px 12px; border-radius: 999px;
+    }
+    .hero {
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.18), transparent 40%),
+        linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    }
+    .hero .eyebrow { background: rgba(255,255,255,.16); color: #fff; }
+    .hero h1 { font-weight: 700; }
+    .btn { box-shadow: 0 6px 18px rgba(176,58,46,.25); }
+    .hero .btn { box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+    .card { border-radius: 18px; }
+    .icon { box-shadow: inset 0 0 0 1px rgba(176,58,46,.15); }
+    .stat { border-radius: 18px; }
+    .table-wrap { box-shadow: 0 10px 30px rgba(176,58,46,.08); }
+    th { text-transform: uppercase; font-size: .78rem; letter-spacing: .06em; color: var(--muted); }
+    .store-details {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+      padding: 26px 28px; box-shadow: 0 10px 30px rgba(176,58,46,.08);
+    }
+    .store-photo { box-shadow: 0 14px 34px rgba(0,0,0,.18); }
+    footer { box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+
+    /* Store details editor */
+    #store-edit, #pharm-popup {
+      position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.45);
+      display: none; place-items: center; padding: 16px;
+    }
+    #store-edit.open, #pharm-popup.open { display: grid; }
+    .pharm-list { list-style: decimal; padding-left: 22px; display: grid; gap: 14px; }
+    .pharm-list a { font-weight: 600; }
+    .detail-facts { display: grid; gap: 14px; padding: 6px 0; }
+    .detail-top { display: flex; flex-wrap: wrap; gap: 14px 36px; }
+    .detail-item { display: grid; gap: 2px; }
+    .detail-label { font-size: .85rem; color: var(--muted); }
+    .footer-disclaimer {
+      margin-top: 24px; padding: 18px 22px; background: #ffffff; color: #1d2b2b;
+      border-radius: 12px; font-size: .88rem;
+    }
+    .footer-disclaimer h3 { font-size: 1rem; color: #1d2b2b; margin-bottom: 8px; }
+    .footer-disclaimer ul { padding-left: 20px; display: grid; gap: 8px; }
+    .footer-disclaimer strong { color: #1d2b2b; }
+    .pharm-names { list-style: decimal; padding-left: 22px; display: grid; gap: 12px; font-size: .95rem; }
+    .pharm-names strong { color: var(--primary); }
+    .pharm-names li::marker, .pharm-list li::marker { color: var(--primary); font-weight: 600; }
+    .pharm-names a { font-weight: 600; }
+    .store-edit-box {
+      width: min(440px, 100%); max-height: 90vh; overflow-y: auto;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 26px; display: grid; gap: 12px;
+    }
+    .store-edit-box h2 { font-size: 1.3rem; }
+    #se-address { min-height: 80px; }
+    .store-details .btn { justify-self: start; }
+
+    /* Product page */
+    .product-card { padding-block: 24px; }
+    .product-card h2 { margin-bottom: 16px; }
+    .product-facts { display: flex; flex-wrap: wrap; gap: 24px 40px; margin-bottom: 24px; }
+    .product-facts dt { font-size: .85rem; color: var(--muted); }
+    .product-facts dd { font-weight: 600; }
+    .product-use {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+      padding: 24px 26px; max-width: 720px;
+    }
+    .product-use h3 { font-size: 1rem; color: var(--primary); margin-bottom: 8px; }
+    .product-link { color: var(--primary); font-weight: 600; }
+    .back-btn { display: inline-block; margin-bottom: 16px; }
+
+    /* Colour accents */
+    header { border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--primary), #f4a261, #6c8cff) 1; }
+    .brand-mark { background: linear-gradient(135deg, var(--primary), #6c8cff); }
+    .btn { background: linear-gradient(135deg, var(--primary), #d0534a); border-color: var(--primary); }
+    .btn.ghost { background: transparent; }
+    .hero-badges span:nth-child(1) { background: rgba(244,162,97,.35); }
+    .hero-badges span:nth-child(2) { background: rgba(108,140,255,.35); }
+    .hero-badges span:nth-child(3) { background: rgba(255,255,255,.22); }
+    .store-details > div:nth-child(odd) h3 { color: var(--primary); }
+    .search-tools input[type="search"] { border: 2px solid var(--primary); }
+    .search-tools input[type="search"]:focus { box-shadow: 0 0 0 4px rgba(176,58,46,.15); }
+    th { background: linear-gradient(90deg, rgba(176,58,46,.14), rgba(108,140,255,.14)); color: var(--text); }
+    td strong { color: var(--primary); }
+    .card:nth-child(3n+1) .icon { background: rgba(244,162,97,.22); color: #c7682c; }
+    .card:nth-child(3n+2) .icon { background: rgba(108,140,255,.2); color: #3d56c9; }
+    .card:nth-child(3n) .icon { background: rgba(176,58,46,.14); color: var(--primary); }
+    .alt { background: linear-gradient(180deg, var(--surface), var(--bg)); }
+    footer { background: linear-gradient(135deg, var(--primary-dark), #2d3f8f); }
+    .pharm-list strong { color: var(--primary); }
+    .product-link { color: var(--primary); }
+    .store-details > div h3 { color: var(--primary); }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .about, .contact { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-toggle { display: inline-block; }
+      nav {
+        display: none; position: absolute; top: 68px; left: 0; right: 0;
+        background: var(--surface); border-bottom: 1px solid var(--border);
+      }
+      nav.open { display: block; }
+      nav ul { flex-direction: column; gap: 0; padding: 8px 16px 16px; }
+      nav li a { display: block; padding: 12px 4px; border-top: 1px solid var(--border); }
+      .nav .btn { display: none; }
+      section { padding: 48px 0; }
+      .hero { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="login-screen">
+    <form class="login-box" id="login-form">
+      <div class="brand"><span class="brand-mark">R</span><span data-store="name">Ratna Medical Store Branch</span></div>
+      <h2>Admin sign in</h2>
+      <label>User name
+        <input type="text" id="login-user" autocomplete="username" required>
+      </label>
+      <label>Password
+        <input type="password" id="login-pass" autocomplete="current-password" required>
+      </label>
+      <button class="btn" type="submit">Sign In</button>
+      <button class="btn ghost" type="button" id="login-cancel">Cancel</button>
+      <p class="login-error" id="login-error">Wrong user name or password.</p>
+    </form>
+  </div>
+
+
+
+  <div id="store-edit">
+    <form class="store-edit-box" id="store-edit-form">
+      <h2>Edit store details</h2>
+      <label>Store name
+        <input type="text" id="se-name" required>
+      </label>
+      <label>Drug licence number
+        <input type="text" id="se-licence" required>
+      </label>
+      <label>Food licence number
+        <input type="text" id="se-foodlicence" required>
+      </label>
+      <label>GST number
+        <input type="text" id="se-gst" required>
+      </label>
+      <label>Pharmacists (one per line: Name, phone)
+        <textarea id="se-pharm"></textarea>
+      </label>
+      <label>Disclaimer (one point per line)
+        <textarea id="se-disclaimer"></textarea>
+      </label>
+      <label>Address
+        <textarea id="se-address" required></textarea>
+      </label>
+      <label>Phone
+        <input type="text" id="se-phone" required>
+      </label>
+      <label>Store timings
+        <input type="text" id="se-hours" required>
+      </label>
+      <label>Email
+        <input type="email" id="se-email">
+      </label>
+      <label>Store photo
+        <input type="file" id="se-photo" accept="image/*" multiple>
+      </label>
+      <div class="photo-edit-list" id="se-photo-list"></div>
+      <p class="form-note">Choose photos to add. Use Remove on any photo to take it out.</p>
+      <p class="login-error" id="se-error">Could not save. The photo may be too large; try a smaller image.</p>
+      <button class="btn" type="submit">Save details</button>
+      <button class="btn ghost" type="button" id="se-cancel">Cancel</button>
+    </form>
+  </div>
+
+  <div id="pharm-popup">
+    <div class="store-edit-box">
+      <h2>Pharmacists</h2>
+      <ol id="pharm-list" class="pharm-list"></ol>
+      <button class="btn ghost" type="button" id="pharm-close">Close</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a href="#price-search" class="brand">
+        <span class="brand-mark">R</span>
+        <span data-store="name">Ratna Medical Store Branch</span>
+      </a>
+      <nav id="site-nav">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#price-search">Prices</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        <span class="welcome" id="welcome"></span>
+        <button class="theme-toggle" id="admin-btn" type="button">Admin login</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container store-top is-loading">
+    <div class="store-row">
+      <div class="store-left">
+        <img id="store-photo" class="store-photo" src="store.webp" alt="Ratna Medical Store Branch front view">
+        <div class="slider-dots" id="slider-dots"></div>
+        <a href="#" id="pharm-link" class="btn ghost">Pharmacists</a>
+        <ol id="pharm-names" class="pharm-names"></ol>
+      </div>
+      <div class="store-details">
+        <button type="button" class="btn admin-only" id="edit-store-btn">Edit store details</button>
+        <div>
+          <h3>Drug Licence No.</h3>
+          <p><span data-store="licence">UP93200000365 ; UP93210000365</span></p>
+        </div>
+        <div>
+          <h3>Food Licence No.</h3>
+          <p><span data-store="foodlicence">12715013000089</span></p>
+        </div>
+        <div>
+          <h3>GST No.</h3>
+          <p><span data-store="gst">09AAGFR1291Q1ZJ</span></p>
+        </div>
+        <div>
+          <h3>Address</h3>
+          <p><span data-store="address">OPP MLB MEDICAL COLLEGE GATE NO.1 INSIDE KAMLA HOSPITAL JHANSI</span></p>
+        </div>
+        <div>
+          <h3>Phone</h3>
+          <p><a data-store="phone" href="tel:+919936797633">9936797633</a></p>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <p><a data-store="email" href="mailto:Ratnamsjhs@gmail.com">Ratnamsjhs@gmail.com</a></p>
+        </div>
+        <div>
+          <h3>Store timings</h3>
+          <p><span data-store="hours">8:00 A.M TO 9:00 P.M</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+
+    <!-- Price search -->
+    <section id="price-search" class="alt">
+      <div class="container">
+        <span class="eyebrow">Price list</span>
+        <h2>Search Medicine Prices</h2>
+        <p class="lead">Type a medicine name to see its pack and category.</p>
+        <div class="search-tools">
+          <input type="search" id="med-search" placeholder="Search medicine, e.g. Paracetamol" aria-label="Search medicine">
+          <label class="file-btn admin-only">Upload Excel / CSV
+            <input type="file" id="price-file" accept=".xlsx,.xls,.csv" hidden>
+          </label>
+          <button type="button" class="btn admin-only" id="save-btn" disabled>Save</button>
+        </div>
+        <p class="form-note" id="price-status">Showing sample medicines. The admin can upload the Excel file to replace them.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr id="price-head"></tr>
+            </thead>
+            <tbody id="price-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container">
+        <span class="eyebrow">Your trusted neighbourhood pharmacy</span>
+        <h1>Quality medicines.<br>Caring service, every day.</h1>
+        <p><span data-store="name">Ratna Medical Store Branch</span> brings genuine medicines, health essentials. Visit us in store or call us for medicines and advice.</p>
+        <div class="actions">
+          <a href="#price-search" class="btn">Order Medicines</a>
+          <a href="#services" class="btn ghost">Explore Services</a>
+        </div>
+        <div class="hero-badges">
+          <span>100% Genuine Products</span>
+          <span>Prescription Support</span>
+          <span>Expert Pharmacist Advice</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="alt">
+      <div class="container">
+        <span class="eyebrow">What we offer</span>
+        <h2>Our Services</h2>
+        <p class="lead">From everyday medicines to prescription refills, we make it simple to get the care you need.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="icon">&#128138;</div>
+            <h3>Prescription Medicines</h3>
+            <p>Fill prescriptions quickly with genuine medicines and accurate dispensing.</p>
+          </div>
+          <div class="card">
+            <div class="icon">&#128101;</div>
+            <h3>Pharmacist Consultation</h3>
+            <p>Talk to our qualified pharmacist about dosage, interactions and side effects.</p>
+          </div>
+          <div class="card">
+            <div class="icon">&#128260;</div>
+            <h3>Refill Reminders</h3>
+            <p>Never run out of your regular medicines. We'll remind you when it's time to refill.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container row">
+      <div>
+        <div class="brand"><span class="brand-mark">R</span><span data-store="name">Ratna Medical Store Branch</span></div>
+        <p style="margin-top:8px;">Genuine medicines. Caring service.</p>
+        <p><span data-store="address">OPP MLB MEDICAL COLLEGE GATE NO.1 INSIDE KAMLA HOSPITAL JHANSI</span></p>
+        <p>Phone: <a data-store="phone" href="tel:+919936797633">9936797633</a></p>
+        <p>Email: <a data-store="email" href="mailto:Ratnamsjhs@gmail.com">Ratnamsjhs@gmail.com</a></p>
+      </div>
+      <div>
+        <p><a href="#price-search">Prices</a></p>
+        <p>Drug Licence No.: <span data-store="licence">UP93200000365 ; UP93210000365</span></p>
+        <p>&copy; <span id="year"></span> <span data-store="name">Ratna Medical Store Branch</span>. All rights reserved.</p>
+      </div>
+    </div>
+  <div class="container footer-disclaimer">
+    <h3>Disclaimer</h3>
+    <ul id="disclaimer-list">
+      <li><strong>MRP &amp; Pricing:</strong> The MRP of products displayed on the website may vary depending on the batch available at our shop. The MRP printed on the current billing batch will be valid.</li>
+      <li><strong>Medicine Description &amp; Accuracy:</strong> Medicine descriptions on this website are sourced from the internet and may be incorrect. Always consult a qualified doctor or pharmacist for accurate information and medical guidance.</li>
+    </ul>
+  </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script>
+    // Admin login. Anyone can search; only the admin can upload the Excel file.
+    // Note: the credentials are in the page source, so this only keeps casual users
+    // out of the upload. It is not real security.
+    var ADMIN_USER = 'Ankit';
+    var ADMIN_PASS = 'Ankit123';
+    var loginScreen = document.getElementById('login-screen');
+    var loginForm = document.getElementById('login-form');
+    var loginError = document.getElementById('login-error');
+    var adminBtn = document.getElementById('admin-btn');
+
+    function isAdmin() {
+      try { return sessionStorage.getItem('ratna-admin') === 'yes'; } catch (e) { return false; }
+    }
+    function setAdmin(on) {
+      try { sessionStorage.setItem('ratna-admin', on ? 'yes' : 'no'); } catch (e) { /* storage unavailable */ }
+      if (!on) { try { sessionStorage.removeItem('ratna-admin-pass'); } catch (e) { /* ignore */ } }
+      document.body.classList.toggle('is-admin', on);
+      adminBtn.textContent = on ? 'Log out (admin)' : 'Admin login';
+      document.getElementById('welcome').textContent = on ? 'Welcome, ' + ADMIN_USER : '';
+    }
+    function openLogin() {
+      loginError.style.display = 'none';
+      loginScreen.classList.add('open');
+      document.getElementById('login-user').focus();
+    }
+    function closeLogin() {
+      loginScreen.classList.remove('open');
+      loginForm.reset();
+    }
+    setAdmin(isAdmin());
+
+    adminBtn.addEventListener('click', function () {
+      if (isAdmin()) {
+        setAdmin(false);
+      } else {
+        openLogin();
+      }
+    });
+    document.getElementById('login-cancel').addEventListener('click', closeLogin);
+    loginScreen.addEventListener('click', function (e) {
+      if (e.target === loginScreen) closeLogin();
+    });
+
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var user = document.getElementById('login-user').value.trim();
+      var pass = document.getElementById('login-pass').value;
+      if (user === ADMIN_USER && pass === ADMIN_PASS) {
+        try { sessionStorage.setItem('ratna-admin-pass', pass); } catch (err) { /* storage unavailable */ }
+        setAdmin(true);
+        closeLogin();
+      } else {
+        loginError.style.display = 'block';
+      }
+    });
+
+    // Mobile menu toggle
+    var nav = document.getElementById('site-nav');
+    var navToggle = document.getElementById('nav-toggle');
+    navToggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Theme toggle (remembered per viewer when storage is available)
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('theme-toggle');
+    function isDark() {
+      return root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    function refreshThemeLabel() { themeBtn.textContent = isDark() ? 'Light' : 'Dark'; }
+    try {
+      var saved = localStorage.getItem('ratna-theme');
+      if (saved) root.setAttribute('data-theme', saved);
+    } catch (e) { /* storage unavailable */ }
+    refreshThemeLabel();
+    themeBtn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('ratna-theme', next); } catch (e) { /* ignore */ }
+      refreshThemeLabel();
+    });
+
+    // Medicine price search
+    // Sample rows are placeholders; replace them by uploading your own Excel/CSV file.
+    var priceData = [
+      { name: 'ALLEGRA NASAL SPRAY', pack: '1', cat: 'Nasal Care Formulation' },
+      { name: 'AR-EZY N/S', pack: '1', cat: 'Inhaled Corticosteroid Nasal Spray' },
+      { name: 'AR-EZY-DUO', pack: '1', cat: 'Corticosteroid + Antihistamine Combination Nasal Spray' },
+      { name: 'AZEFLO-7ML', pack: '1', cat: 'Corticosteroid + Antihistamine Combination Nasal Spray' },
+      { name: 'AZEFLO-FT 9.8GM', pack: '1', cat: 'Corticosteroid + Antihistamine Combination Nasal Spray' },
+      { name: 'BRESOL-NS', pack: '1', cat: 'Nasal Isotonic Moisturizer / Saline Spray' },
+      { name: 'BUDENASE-AQ', pack: '1', cat: 'Corticosteroid Nasal Spray' },
+      { name: 'COMBINASE-AQ N/S', pack: '1', cat: 'Inhaled Corticosteroid Nasal Spray' },
+      { name: 'COMBINASE-FT', pack: '1', cat: 'Inhaled Corticosteroid Nasal Spray' }
+    ];
+    var searchInput = document.getElementById('med-search');
+    var fileInput = document.getElementById('price-file');
+    var tbody = document.getElementById('price-body');
+    var statusEl = document.getElementById('price-status');
+    var MAX_ROWS = 100;
+    var pendingData = null;
+    var saveBtn = document.getElementById('save-btn');
+
+    // Columns shown in the medicine table, in the order of the Excel file
+    var COLUMNS = [
+      { key: 'name', label: 'Product Name', pattern: /name/i },
+      { key: 'pack', label: 'Pack', pattern: /^\s*pack\s*$/i },
+      { key: 'quantity', label: 'Quantity', pattern: /quanti/i },
+      { key: 'mrp', label: 'MRP', pattern: /mrp|price/i },
+      { key: 'salt', label: 'Salt Composition', pattern: /salt|composition/i },
+      { key: 'uses', label: 'Drug Uses', pattern: /use|usage|indication/i },
+      { key: 'dosage', label: 'Dosages', pattern: /dosage/i },
+      { key: 'how', label: 'How It Works', pattern: /how/i },
+      { key: 'status', label: 'Status', pattern: /status/i }
+    ];
+    (function buildHeader() {
+      var head = document.getElementById('price-head');
+      COLUMNS.slice(0, 1).forEach(function (col) {
+        var th = document.createElement('th');
+        th.textContent = col.label;
+        head.appendChild(th);
+      });
+    })();
+
+    function renderRows(list) {
+      tbody.textContent = '';
+      if (!list.length) {
+        var empty = document.createElement('tr');
+        var cell = document.createElement('td');
+        cell.textContent = 'No medicines found.';
+        empty.appendChild(cell);
+        tbody.appendChild(empty);
+        return;
+      }
+      list.slice(0, MAX_ROWS).forEach(function (row) {
+        var tr = document.createElement('tr');
+        var nameCell = document.createElement('td');
+        var link = document.createElement('a');
+        link.href = '#';
+        link.className = 'product-link';
+        link.textContent = row.name;
+        nameCell.appendChild(link);
+        tr.appendChild(nameCell);
+
+        // Full details for this product, shown under its name when clicked
+        var detail = document.createElement('tr');
+        detail.className = 'detail-row';
+        detail.hidden = true;
+        var detailCell = document.createElement('td');
+        // Product name, pack, MRP and status share one line; the other details each get their own line.
+        // Quantity is not shown.
+        var facts = document.createElement('div');
+        facts.className = 'detail-facts';
+        function pickColumn(key) {
+          return COLUMNS.filter(function (c) { return c.key === key; })[0];
+        }
+        function factItem(col) {
+          var item = document.createElement('div');
+          item.className = 'detail-item';
+          var label = document.createElement('span');
+          label.className = 'detail-label';
+          label.textContent = col.label;
+          var value = document.createElement('strong');
+          value.textContent = row[col.key] || (col.key === 'status' ? 'Available' : 'Not listed');
+          item.appendChild(label);
+          item.appendChild(value);
+          return item;
+        }
+        var top = document.createElement('div');
+        top.className = 'detail-top';
+        ['name', 'pack', 'mrp', 'status'].forEach(function (key) {
+          top.appendChild(factItem(pickColumn(key)));
+        });
+        facts.appendChild(top);
+        ['salt', 'uses', 'dosage', 'how'].forEach(function (key) {
+          facts.appendChild(factItem(pickColumn(key)));
+        });
+        detailCell.appendChild(facts);
+        detail.appendChild(detailCell);
+
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          detail.hidden = !detail.hidden;
+        });
+        tbody.appendChild(tr);
+        tbody.appendChild(detail);
+      });
+    }
+
+    function applySearch() {
+      var q = searchInput.value.replace(/\s+/g, '').toLowerCase();
+      if (!q) {
+        tbody.textContent = '';
+        return;
+      }
+      var matches = (pendingData || priceData).filter(function (row) {
+        return row.name.replace(/\s+/g, '').toLowerCase().indexOf(q) !== -1;
+      });
+      renderRows(matches);
+    }
+
+    // Find the column for a field by matching header names (e.g. "Medicine Name", "MRP")
+    function findKey(keys, pattern) {
+      for (var i = 0; i < keys.length; i++) {
+        if (pattern.test(keys[i])) return keys[i];
+      }
+      return null;
+    }
+
+    fileInput.addEventListener('change', function () {
+      var file = this.files[0];
+      if (!file || !isAdmin()) return;
+      if (typeof XLSX === 'undefined') {
+        statusEl.textContent = 'Could not load the Excel reader. Check your internet connection and try again.';
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          var wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+          var grid = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, defval: '' });
+          // Find the real header row, skipping any blank or title rows above it
+          var headerIndex = grid.findIndex(function (row) {
+            return row.some(function (cell) { return /name|categ|^\s*cat\s*$|pack/i.test(String(cell)); });
+          });
+          if (headerIndex < 0) throw new Error('empty');
+          var headers = grid[headerIndex].map(function (h) { return String(h).trim(); });
+          var rows = grid.slice(headerIndex + 1).map(function (row) {
+            var obj = {};
+            headers.forEach(function (h, i) { if (h) obj[h] = row[i]; });
+            return obj;
+          });
+          if (!rows.length) throw new Error('empty');
+          var keys = headers.filter(function (h) { return h; });
+          var colKeys = {};
+          COLUMNS.forEach(function (col) {
+            colKeys[col.key] = findKey(keys, col.pattern) ||
+              (col.key === 'name' ? findKey(keys, /medicine|item|description/i) : null);
+          });
+          if (!colKeys.name) throw new Error('columns');
+          pendingData = rows
+            .filter(function (r) { return String(r[colKeys.name]).trim() !== ''; })
+            .map(function (r) {
+              var item = {};
+              COLUMNS.forEach(function (col) {
+                var k = colKeys[col.key];
+                item[col.key] = k ? String(r[k]).trim() : '';
+              });
+              return item;
+            });
+          saveBtn.disabled = false;
+          statusEl.textContent = 'Loaded ' + pendingData.length + ' medicines from "' + file.name + '". Click Save to keep them.';
+          applySearch();
+        } catch (err) {
+          statusEl.textContent = 'Could not read that file. Make sure it has a column with the medicine name.';
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    });
+
+    // Shared storage: the Netlify function keeps the store details and medicine list for everyone.
+    // If it cannot be reached (for example when the file is opened from disk), this browser's storage is used.
+    var SHARED_API = '/.netlify/functions/store';
+    async function loadShared() {
+      try {
+        var res = await fetch(SHARED_API, { cache: 'no-store' });
+        if (!res.ok) return null;
+        return await res.json();
+      } catch (e) { return null; }
+    }
+    async function saveShared(payload) {
+      var password = '';
+      try { password = sessionStorage.getItem('ratna-admin-pass') || ''; } catch (e) { /* storage unavailable */ }
+      var res = await fetch(SHARED_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign({ password: password }, payload))
+      });
+      if (!res.ok) throw new Error(res.status === 401 ? 'unauthorized' : 'save failed');
+    }
+
+    async function loadSharedList() {
+      var shared = await loadShared();
+      if (shared && Array.isArray(shared.medicines) && shared.medicines.length) {
+        priceData = shared.medicines;
+        statusEl.textContent = 'Showing ' + priceData.length + ' medicines from the shared list.';
+      } else if (!shared) {
+        try {
+          var savedList = JSON.parse(localStorage.getItem('ratna-medicines') || 'null');
+          if (Array.isArray(savedList) && savedList.length) {
+            priceData = savedList;
+            statusEl.textContent = 'Showing ' + priceData.length + ' medicines saved on this computer.';
+          }
+        } catch (e) { /* keep the sample rows */ }
+      }
+      applySearch();
+    }
+
+    saveBtn.addEventListener('click', async function () {
+      if (!pendingData) return;
+      var rows = pendingData;
+      saveBtn.disabled = true;
+      try {
+        await saveShared({ medicines: rows });
+        statusEl.textContent = 'Saved ' + rows.length + ' medicines. Everyone will see this list.';
+      } catch (err) {
+        if (err.message === 'unauthorized') {
+          saveBtn.disabled = false;
+          statusEl.textContent = 'Could not save: the admin password was not accepted. Sign out and sign in again.';
+          return;
+        }
+        // Shared storage is not reachable (for example, the file is opened from disk): keep the list in this browser
+        try { localStorage.setItem('ratna-medicines', JSON.stringify(rows)); } catch (e) { /* storage full */ }
+        priceData = rows;
+        pendingData = null;
+        saveBtn.disabled = true;
+        applySearch();
+        statusEl.textContent = 'Saved ' + rows.length + ' medicines in this browser (shared storage not reachable).';
+        return;
+      }
+      priceData = rows;
+      pendingData = null;
+      applySearch();
+    });
+
+    // Pharmacist names and numbers: one "Name, phone" per line, shown in a popup
+    var pharmacistText = 'Kamlesh Kushwaha, 1234567890\nAnkit Agarwal, 8318535031';
+    // Show the pharmacist names directly under the Pharmacists button
+    function renderPharmNames() {
+      var list = document.getElementById('pharm-names');
+      list.textContent = '';
+      pharmacistText.split('\n').map(function (l) { return l.trim(); }).filter(Boolean).forEach(function (line) {
+        var parts = line.split(',');
+        var li = document.createElement('li');
+        var name = document.createElement('strong');
+        name.textContent = parts[0].trim();
+        li.appendChild(name);
+        var phone = (parts[1] || '').trim();
+        if (phone) {
+          li.appendChild(document.createElement('br'));
+          if (/\d{10}/.test(phone)) {
+            var a = document.createElement('a');
+            a.href = 'tel:' + phone.replace(/[^0-9+]/g, '');
+            a.textContent = phone;
+            li.appendChild(a);
+          } else {
+            li.appendChild(document.createTextNode(phone));
+          }
+        }
+        list.appendChild(li);
+      });
+    }
+    renderPharmNames();
+
+    // Disclaimer shown in the footer; the admin can edit it in Edit store details
+    var disclaimerText = 'MRP & Pricing: The MRP of products displayed on the website may vary depending on the batch available at our shop. The MRP printed on the current billing batch will be valid.\nMedicine Description & Accuracy: Medicine descriptions on this website are sourced from the internet and may be incorrect. Always consult a qualified doctor or pharmacist for accurate information and medical guidance.';
+    function renderDisclaimer() {
+      var list = document.getElementById('disclaimer-list');
+      list.textContent = '';
+      disclaimerText.split('\n').map(function (l) { return l.trim(); }).filter(Boolean).forEach(function (line) {
+        var li = document.createElement('li');
+        li.textContent = line;
+        list.appendChild(li);
+      });
+    }
+    renderDisclaimer();
+    document.getElementById('pharm-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      var list = document.getElementById('pharm-list');
+      list.textContent = '';
+      var lines = pharmacistText.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+      if (!lines.length) {
+        var none = document.createElement('li');
+        none.textContent = 'No pharmacists added yet. The admin can add them in Edit store details.';
+        list.appendChild(none);
+      }
+      lines.forEach(function (line) {
+        var parts = line.split(',');
+        var li = document.createElement('li');
+        var name = document.createElement('strong');
+        name.textContent = parts[0].trim();
+        li.appendChild(name);
+        var phone = (parts[1] || '').trim();
+        if (phone) {
+          li.appendChild(document.createElement('br'));
+          if (/\d{10}/.test(phone)) {
+            var a = document.createElement('a');
+            a.href = 'tel:' + phone.replace(/[^0-9+]/g, '');
+            a.textContent = phone;
+            li.appendChild(a);
+          } else {
+            li.appendChild(document.createTextNode(phone));
+          }
+        }
+        list.appendChild(li);
+      });
+      document.getElementById('pharm-popup').classList.add('open');
+    });
+    document.getElementById('pharm-close').addEventListener('click', function () {
+      document.getElementById('pharm-popup').classList.remove('open');
+    });
+
+    // Store details: the admin can edit them; the saved values are restored on load
+    var STORE_KEY = 'ratna-store';
+    var editPhotos = [];
+    var storeEdit = document.getElementById('store-edit');
+    var storePhoto = document.getElementById('store-photo');
+    var storePhotos = ['store.webp'];
+    // Show one photo and draw a dot for each photo; clicking a dot shows that photo
+    function showPhoto(i) {
+      storePhoto.src = storePhotos[i];
+      var dots = document.getElementById('slider-dots');
+      dots.textContent = '';
+      dots.hidden = storePhotos.length < 2;
+      storePhotos.forEach(function (src, n) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Photo ' + (n + 1));
+        if (n === i) b.className = 'active';
+        b.addEventListener('click', function () { showPhoto(n); });
+        dots.appendChild(b);
+      });
+    }
+    showPhoto(0);
+    function currentStore() {
+      function text(attr) {
+        var el = document.querySelector('[data-store="' + attr + '"]');
+        return el ? el.textContent : '';
+      }
+      return {
+        name: text('name'), licence: text('licence'), foodlicence: text('foodlicence'), gst: text('gst'),
+        pharmacists: pharmacistText,
+        disclaimer: disclaimerText,
+        address: text('address'), phone: text('phone'), hours: text('hours'), email: text('email')
+      };
+    }
+    function applyStore(sd) {
+      if (sd.name) {
+        document.querySelectorAll('[data-store="name"]').forEach(function (el) { el.textContent = sd.name; });
+        document.title = sd.name;
+      }
+      document.querySelectorAll('[data-store="licence"]').forEach(function (el) { el.textContent = sd.licence; });
+      // Older saved details may not have these two fields yet, so fall back to the defaults
+      document.querySelectorAll('[data-store="foodlicence"]').forEach(function (el) { el.textContent = sd.foodlicence || '12715013000089'; });
+      document.querySelectorAll('[data-store="gst"]').forEach(function (el) { el.textContent = sd.gst || '09AAGFR1291Q1ZJ'; });
+      document.querySelectorAll('[data-store="address"]').forEach(function (el) { el.textContent = sd.address; });
+      document.querySelectorAll('[data-store="hours"]').forEach(function (el) { el.textContent = sd.hours; });
+      document.querySelectorAll('[data-store="phone"]').forEach(function (el) {
+        el.textContent = sd.phone;
+        el.href = 'tel:' + sd.phone.replace(/[^0-9+]/g, '');
+      });
+      if (sd.email) document.querySelectorAll('[data-store="email"]').forEach(function (el) { el.textContent = sd.email; el.href = 'mailto:' + sd.email; });
+      if (sd.pharmacists) pharmacistText = sd.pharmacists;
+      renderPharmNames();
+      if (sd.disclaimer) disclaimerText = sd.disclaimer;
+      renderDisclaimer();
+      if (Array.isArray(sd.photos) && sd.photos.length) storePhotos = sd.photos;
+      else if (sd.photo) storePhotos = [sd.photo];
+      showPhoto(0);
+    }
+    // Load the saved store details: from shared storage, otherwise from this browser
+    async function loadStoreDetails() {
+      var shared = await loadShared();
+      try {
+        if (shared && shared.store) {
+          applyStore(shared.store);
+        } else if (!shared) {
+          var savedStore = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+          if (savedStore) applyStore(savedStore);
+        }
+      } catch (e) { /* keep the built-in details */ }
+      document.querySelector(".store-top").classList.remove("is-loading");
+    }
+
+    document.getElementById('edit-store-btn').addEventListener('click', function () {
+      var cur = currentStore();
+      document.getElementById('se-name').value = cur.name;
+      document.getElementById('se-licence').value = cur.licence;
+      document.getElementById('se-address').value = cur.address;
+      document.getElementById('se-phone').value = cur.phone;
+      document.getElementById('se-hours').value = cur.hours;
+      document.getElementById('se-email').value = cur.email;
+      document.getElementById('se-foodlicence').value = cur.foodlicence;
+      document.getElementById('se-gst').value = cur.gst;
+      document.getElementById('se-pharm').value = cur.pharmacists;
+      document.getElementById('se-disclaimer').value = cur.disclaimer;
+      document.getElementById('se-error').style.display = 'none';
+      editPhotos = storePhotos.slice();
+      renderEditPhotos();
+      storeEdit.classList.add('open');
+    });
+    // Draw the photos being edited, each with a Remove button
+    function renderEditPhotos() {
+      var list = document.getElementById('se-photo-list');
+      list.textContent = '';
+      editPhotos.forEach(function (src, i) {
+        var item = document.createElement('div');
+        item.className = 'photo-edit-item';
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Photo ' + (i + 1);
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.textContent = 'Remove';
+        del.addEventListener('click', function () { editPhotos.splice(i, 1); renderEditPhotos(); });
+        item.appendChild(img);
+        item.appendChild(del);
+        list.appendChild(item);
+      });
+    }
+    // Choosing files adds them to the photos already in the list
+    document.getElementById('se-photo').addEventListener('change', function () {
+      var files = Array.prototype.slice.call(this.files);
+      this.value = '';
+      files.forEach(function (file) {
+        var reader = new FileReader();
+        reader.onload = function (e) { editPhotos.push(e.target.result); renderEditPhotos(); };
+        reader.readAsDataURL(file);
+      });
+    });
+    document.getElementById('se-cancel').addEventListener('click', function () {
+      storeEdit.classList.remove('open');
+    });
+    document.getElementById('store-edit-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var sd = {
+        name: document.getElementById('se-name').value.trim(),
+        licence: document.getElementById('se-licence').value.trim(),
+        foodlicence: document.getElementById('se-foodlicence').value.trim(),
+        gst: document.getElementById('se-gst').value.trim(),
+        pharmacists: document.getElementById('se-pharm').value.trim(),
+        disclaimer: document.getElementById('se-disclaimer').value.trim(),
+        address: document.getElementById('se-address').value.trim(),
+        phone: document.getElementById('se-phone').value.trim(),
+        hours: document.getElementById('se-hours').value.trim(),
+        email: document.getElementById('se-email').value.trim(),
+        photos: editPhotos.length ? editPhotos : ['store.webp']
+      };
+      try {
+        await saveShared({ store: sd });
+      } catch (err) {
+        if (err.message === 'unauthorized') {
+          var seError = document.getElementById('se-error');
+          seError.textContent = 'Admin password not accepted. Sign out and sign in again.';
+          seError.style.display = 'block';
+          return;
+        }
+        // Shared storage is not reachable (for example, the file is opened from disk): keep the change in this browser
+      }
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(sd)); } catch (err) { /* local copy is optional */ }
+      applyStore(sd);
+      storeEdit.classList.remove('open');
+    });
+
+    searchInput.addEventListener('input', applySearch);
+    loadSharedList();
+    loadStoreDetails();
+
+    // Contact form (demo: no backend yet)
+    document.getElementById('order-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      this.reset();
+      document.getElementById('success-msg').style.display = 'block';
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

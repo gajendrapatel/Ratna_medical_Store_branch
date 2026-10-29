@@ -1,0 +1,7 @@
+{
+  "name": "ratna-medical-store",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "^8.0.0"
+  }
+}
