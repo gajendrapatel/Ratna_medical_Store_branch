@@ -290,6 +290,7 @@
     .detail-top { display: flex; flex-wrap: wrap; gap: 14px 36px; }
     .detail-item { display: grid; gap: 2px; }
     .detail-label { font-size: .85rem; color: var(--muted); }
+    .product-note { font-size: .88rem; color: var(--text); background: var(--bg); border-left: 3px solid #f4a261; border-radius: 8px; padding: 10px 14px; }
     .footer-disclaimer {
       margin-top: 24px; padding: 18px 22px; background: #ffffff; color: #1d2b2b;
       border-radius: 12px; font-size: .88rem;
@@ -402,6 +403,9 @@
       </label>
       <label>Pharmacists (one per line: Name, phone)
         <textarea id="se-pharm"></textarea>
+      </label>
+      <label>Product note (shown above salt composition; leave blank to hide)
+        <textarea id="se-productnote"></textarea>
       </label>
       <label>Disclaimer (one point per line)
         <textarea id="se-disclaimer"></textarea>
@@ -633,6 +637,7 @@
     adminBtn.addEventListener('click', function () {
       if (isAdmin()) {
         setAdmin(false);
+        resetPage();
       } else {
         openLogin();
       }
@@ -650,6 +655,7 @@
         try { sessionStorage.setItem('ratna-admin-pass', pass); } catch (err) { /* storage unavailable */ }
         setAdmin(true);
         closeLogin();
+        resetPage();
       } else {
         loginError.style.display = 'block';
       }
@@ -781,6 +787,11 @@
           top.appendChild(factItem(pickColumn(key)));
         });
         facts.appendChild(top);
+        // Note shown above the salt composition in the product details
+        var productNote = document.createElement('p');
+        productNote.className = 'product-note';
+        productNote.textContent = productNoteText;
+        if (productNoteText) facts.appendChild(productNote);
         ['salt', 'uses', 'dosage', 'how'].forEach(function (key) {
           facts.appendChild(factItem(pickColumn(key)));
         });
@@ -794,6 +805,13 @@
         tbody.appendChild(tr);
         tbody.appendChild(detail);
       });
+    }
+
+    // Clear the search and go back to the top of the page
+    function resetPage() {
+      searchInput.value = '';
+      applySearch();
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     function applySearch() {
@@ -912,6 +930,7 @@
       try {
         await saveShared({ medicines: rows });
         statusEl.textContent = 'Saved ' + rows.length + ' medicines. Everyone will see this list.';
+        window.scrollTo(0, 0);
       } catch (err) {
         if (err.message === 'unauthorized') {
           saveBtn.disabled = false;
@@ -925,6 +944,7 @@
         saveBtn.disabled = true;
         applySearch();
         statusEl.textContent = 'Saved ' + rows.length + ' medicines in this browser (shared storage not reachable).';
+        window.scrollTo(0, 0);
         return;
       }
       priceData = rows;
@@ -961,6 +981,8 @@
     }
     renderPharmNames();
 
+    // Note shown above the salt composition in each product's details; blank hides it
+    var productNoteText = 'Please Note: below information regarding this product may not be accurate as our website is under maintenance and details are internet-sourced. Always consult your doctor or pharmacist for correct medical information.';
     // Disclaimer shown in the footer; the admin can edit it in Edit store details
     var disclaimerText = 'MRP & Pricing: The MRP of products displayed on the website may vary depending on the batch available at our shop. The MRP printed on the current billing batch will be valid.\nMedicine Description & Accuracy: Medicine descriptions on this website are sourced from the internet and may be incorrect. Always consult a qualified doctor or pharmacist for accurate information and medical guidance.';
     function renderDisclaimer() {
@@ -1040,6 +1062,7 @@
         name: text('name'), licence: text('licence'), foodlicence: text('foodlicence'), gst: text('gst'),
         pharmacists: pharmacistText,
         disclaimer: disclaimerText,
+        productNote: productNoteText,
         address: text('address'), phone: text('phone'), hours: text('hours'), email: text('email')
       };
     }
@@ -1061,6 +1084,7 @@
       if (sd.email) document.querySelectorAll('[data-store="email"]').forEach(function (el) { el.textContent = sd.email; el.href = 'mailto:' + sd.email; });
       if (sd.pharmacists) pharmacistText = sd.pharmacists;
       renderPharmNames();
+      if (sd.productNote !== undefined) productNoteText = sd.productNote;
       if (sd.disclaimer) disclaimerText = sd.disclaimer;
       renderDisclaimer();
       if (Array.isArray(sd.photos) && sd.photos.length) storePhotos = sd.photos;
@@ -1099,6 +1123,7 @@
       document.getElementById('se-gst').value = cur.gst;
       document.getElementById('se-pharm').value = cur.pharmacists;
       document.getElementById('se-disclaimer').value = cur.disclaimer;
+      document.getElementById('se-productnote').value = cur.productNote;
       document.getElementById('se-error').style.display = 'none';
       editPhotos = storePhotos.slice();
       renderEditPhotos();
@@ -1145,6 +1170,7 @@
         gst: document.getElementById('se-gst').value.trim(),
         pharmacists: document.getElementById('se-pharm').value.trim(),
         disclaimer: document.getElementById('se-disclaimer').value.trim(),
+        productNote: document.getElementById('se-productnote').value.trim(),
         address: document.getElementById('se-address').value.trim(),
         phone: document.getElementById('se-phone').value.trim(),
         hours: document.getElementById('se-hours').value.trim(),
@@ -1165,6 +1191,7 @@
       try { localStorage.setItem(STORE_KEY, JSON.stringify(sd)); } catch (err) { /* local copy is optional */ }
       applyStore(sd);
       storeEdit.classList.remove('open');
+      window.scrollTo(0, 0);
     });
 
     searchInput.addEventListener('input', applySearch);
