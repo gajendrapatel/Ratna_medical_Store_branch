@@ -1039,10 +1039,13 @@
     var storePhotos = ['store.webp'];
     // Show one photo and draw a dot for each photo; clicking a dot shows that photo
     function showPhoto(i) {
-      storePhoto.src = storePhotos[i];
       var dots = document.getElementById('slider-dots');
+      // No photos: hide the photo and its dots
+      storePhoto.style.display = storePhotos.length ? '' : 'none';
       dots.textContent = '';
       dots.hidden = storePhotos.length < 2;
+      if (!storePhotos.length) return;
+      storePhoto.src = storePhotos[i];
       storePhotos.forEach(function (src, n) {
         var b = document.createElement('button');
         b.type = 'button';
@@ -1067,9 +1070,9 @@
       };
     }
     function applyStore(sd) {
-      if (sd.name) {
+      if (sd.name !== undefined) {
         document.querySelectorAll('[data-store="name"]').forEach(function (el) { el.textContent = sd.name; });
-        document.title = sd.name;
+        if (sd.name) document.title = sd.name;
       }
       document.querySelectorAll('[data-store="licence"]').forEach(function (el) { el.textContent = sd.licence; });
       // Older saved details may not have these two fields yet, so fall back to the defaults
@@ -1081,18 +1084,21 @@
         el.textContent = sd.phone;
         el.href = 'tel:' + sd.phone.replace(/[^0-9+]/g, '');
       });
-      if (sd.email) document.querySelectorAll('[data-store="email"]').forEach(function (el) { el.textContent = sd.email; el.href = 'mailto:' + sd.email; });
-      if (sd.pharmacists) pharmacistText = sd.pharmacists;
+      if (sd.email !== undefined) document.querySelectorAll('[data-store="email"]').forEach(function (el) { el.textContent = sd.email; el.href = sd.email ? 'mailto:' + sd.email : ''; });
+      if (sd.pharmacists !== undefined) pharmacistText = sd.pharmacists;
       renderPharmNames();
+      // A blank pharmacist list hides the Pharmacists button
+      document.getElementById('pharm-link').style.display = pharmacistText.trim() ? '' : 'none';
       if (sd.productNote !== undefined) productNoteText = sd.productNote;
-      if (sd.disclaimer) disclaimerText = sd.disclaimer;
+      if (sd.disclaimer !== undefined) disclaimerText = sd.disclaimer;
       renderDisclaimer();
-      if (Array.isArray(sd.photos) && sd.photos.length) storePhotos = sd.photos;
+      // A blank disclaimer hides the whole footer section
+      document.querySelector('.footer-disclaimer').style.display = disclaimerText.trim() ? '' : 'none';
+      if (Array.isArray(sd.photos)) storePhotos = sd.photos;
       else if (sd.photo) storePhotos = [sd.photo];
       showPhoto(0);
       // Hide any detail that is blank, so only filled-in details show
       document.querySelectorAll('[data-store]').forEach(function (el) {
-        if (el.getAttribute('data-store') === 'name') return;
         var item = el.closest('.store-details > div') || el.closest('p');
         if (item) item.hidden = !el.textContent.trim();
       });
@@ -1175,7 +1181,7 @@
         phone: document.getElementById('se-phone').value.trim(),
         hours: document.getElementById('se-hours').value.trim(),
         email: document.getElementById('se-email').value.trim(),
-        photos: editPhotos.length ? editPhotos : ['store.webp']
+        photos: editPhotos
       };
       try {
         await saveShared({ store: sd });
